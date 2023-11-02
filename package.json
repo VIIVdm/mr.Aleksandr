@@ -4,7 +4,7 @@
   "description": "",
   "main": "webpack.config.js",
   "scripts": {
-    "start": "webpack --mode development",
+    "start": "webpack serve --mode development",
     "build": "webpack --mode production"
   },
   "keywords": [],
@@ -22,7 +22,8 @@
     "sass": "^1.64.1",
     "sass-loader": "^13.3.2",
     "webpack": "^5.88.2",
-    "webpack-cli": "^5.1.4"
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1"
   },
   "dependencies": {
     "@babel/polyfill": "^7.12.1"
