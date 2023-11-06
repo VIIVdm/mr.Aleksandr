@@ -8,8 +8,7 @@ module.exports = (env, argv) => {
   const isProd = argv.mode === 'production'
   const isDev = !isProd
 
-  const filename = ext => isProd ? `[name].[contenthash].bundle.${ext}` 
-                          : `[name].bundle.${ext}`
+  const filename = ext => isProd ? `[name].[contenthash].bundle.${ext}` : `[name].bundle.${ext}`
 
   if(isProd) {
     console.log('production')
@@ -63,8 +62,18 @@ module.exports = (env, argv) => {
             test: /\.s[ac]ss$/i,
             use: [
                 MiniCssExtractPlugin.loader,
-                "css-loader",
-                "sass-loader",
+                'css-loader',
+                {
+                  loader: "postcss-loader",
+                  options: {
+                    postcssOptions: {
+                      plugins: () => [
+                        autoprefixer
+                      ],
+                    },
+                  },
+                },
+                'sass-loader'
             ],
           },
           {
